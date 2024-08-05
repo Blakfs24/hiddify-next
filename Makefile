@@ -24,9 +24,12 @@ CORE_NAME=$(CORE_PRODUCT_NAME)
 LIB_NAME=libcore
 
 ifeq ($(CHANNEL),prod)
-	CORE_URL=https://github.com/hiddify/hiddify-next-core/releases/download/v$(core.version)
+	# CORE_URL=https://github.com/hiddify/hiddify-next-core/releases/download/v$(core.version)
+	CORE_URL=https://github.com/Blakfs24/hiddify-core/releases/download/draft
 else
-	CORE_URL=https://github.com/hiddify/hiddify-next-core/releases/download/draft
+	# CORE_URL=https://github.com/hiddify/hiddify-next-core/releases/download/draft
+	CORE_URL=https://github.com/Blakfs24/hiddify-core/releases/download/draft
+
 endif
 
 ifeq ($(CHANNEL),prod)
@@ -224,7 +227,7 @@ release: # Create a new tag for release.
 	@echo "previous version was $$(git describe --tags $$(git rev-list --tags --max-count=1))"
 	@echo "WARNING: This operation will creates version tag and push to github"
 	@bash -c '\
-	[ "404" == $$(curl -o /dev/null -I -s -w "%{http_code}" https://github.com/hiddify/hiddify-core/releases/download/v$(core.version)/hiddify-core-linux-amd64.tar.gz) ]&&{ echo "Core Not Found"; exit 1 ; } || \
+	[ "404" == $$(curl -o /dev/null -I -s -w "%{http_code}" https://github.com/Blakfs24/hiddify-core/releases/download/draft/hiddify-core-linux-amd64.tar.gz) ]&&{ echo "Core Not Found"; exit 1 ; } || \
 	cversion_string=`grep -e "^version:" pubspec.yaml | cut -d: -f2-`;\
 	cstr_version=`echo "$${cversion_string}" | sed -n "s/[ ]*\\([0-9]\\+\\.[0-9]\\+\\.[0-9]\\+\\)+.*/\\1/p"`; \
 	[ "$$cversion_string" == "" ] && { echo "getting old version error"; exit 1 ; } ||\
