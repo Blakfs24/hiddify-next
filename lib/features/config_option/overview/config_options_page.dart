@@ -138,6 +138,7 @@ class ConfigOptionsPage extends HookConsumerWidget {
                     title: t.config.logLevel,
                     presentChoice: (value) => value.name.toUpperCase(),
                   ),
+
                   const SettingsDivider(),
                   SettingsSection(t.config.section.route),
                   ChoicePreferenceWidget(
@@ -375,6 +376,12 @@ class ConfigOptionsPage extends HookConsumerWidget {
                     title: t.config.cloudflareIpNum,
                     inputToValue: int.tryParse,
                     digitsOnly: true,
+                  ),
+                  SwitchListTile(
+                    title: Text(experimental(t.config.useXrayCoreWhenPossible.Label)),
+                    subtitle: Text(t.config.useXrayCoreWhenPossible.Description),
+                    value: ref.watch(ConfigOptions.useXrayCoreWhenPossible),
+                    onChanged: ref.watch(ConfigOptions.useXrayCoreWhenPossible.notifier).update,
                   ),
                   const Gap(24),
                 ],
