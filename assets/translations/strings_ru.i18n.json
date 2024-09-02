@@ -422,5 +422,10 @@
     "warpNoiseDelay": "Задержка шума",
     "enableCloudFlare": "Enable CloudFlare",
     "cloudflareIpNum": "IP Number"
+  },
+  "window": {
+    "hide": "Скрыть",
+    "close": "Закрыть",
+    "alertMessage": "Скрыть или выйти из приложения?"
   }
 }
