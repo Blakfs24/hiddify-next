@@ -76,7 +76,7 @@ jobs:
             targets: aab
 
           - platform: windows
-            os: windows-2019
+            os: windows-2022
             aarch: amd64
             targets: exe,msix
 
